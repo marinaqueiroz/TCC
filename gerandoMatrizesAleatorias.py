@@ -7,58 +7,43 @@ Created on Thu Apr 14 23:00:34 2016
 
 import numpy as np
 import numpy
-import sys
-from scipy.io import savemat
+
 
 #import time
 
-#tam=1
-ordem=3
+qtdMat=3
+ordem=2
 ordemQuadrada=ordem**2
 listaVetores=[]
 matriz=[]
-aux2=[]
+matrizes=[]
 
-for i in range(ordem):
-    listaVetores.append(np.random.randn(ordem))
+
+for j in range(qtdMat):
+    for i in range(ordem):
+        listaVetores.append(np.random.randn(ordem))
+    matriz=numpy.matrix(listaVetores)
+    matrizes.append(matriz)
+    listaVetores.clear()   
     
-#for i in range(ordemQuadrada):
-    #listaVetores.append(np.array(np.random.randn()))
-   
-    
-#print(listaVetores)
-
-for x in range(ordem):
-    for y in range(ordem):
-        a=listaVetores[x][y]
-        aux2.append(a)
-        #print(aux2)
-        
-    
-#print("*****"+"****************************************************************")
-
-matriz=numpy.matrix(listaVetores)
-print("matriz","\n",matriz)
-print(len(matriz))
-
 
 
 # Criando um objeto do tipo file
-for n in range (1,ordemQuadrada+1):
+for n in range (1,qtdMat+1):
     a=str(n)
     temp = open('mat'+a, 'w')
-    b=aux2[n-1]
+    b=matrizes[n-1]
+    #trasnformando matriz para String
     c=str(b)
-    # Escrevendo no arquivo 
+    #Escrevendo no arquivo 
     temp.write(c)
-    # Fechando 
+    #Fechando 
     temp.close()
 
 #recuperando    
-temp=open("1")
-a= temp.read()
-print(a)
-
+#temp=open("1")
+#a= temp.read()
+#print(a)
 
 
 #x=matriz.transpose()
